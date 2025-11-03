@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SOTF Studio —</title>
+  <style>
+    /* ------- Reset & base ------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter, "Helvetica Neue", Arial, sans-serif; background:#fff;color:#111;line-height:1.4}
+    a{color:inherit;text-decoration:none}
+
+    /* ------- Header ------- */
+    header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,0.06)}
+    .container{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .nav-left,.nav-right{display:flex;gap:14px;align-items:center}
+    .nav-left a, .nav-right a{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1px;padding:8px 6px;position:relative;color:#111}
+    .nav-left a::after,.nav-right a::after{content:"";position:absolute;left:6px;right:6px;bottom:6px;height:2px;background:transparent;border-radius:2px;transition:all .22s}
+    .nav-left a:hover::after,.nav-right a:hover::after{background:#222}
+    .logo img{height:52px;display:block}
+
+    .icons{display:flex;gap:10px;align-items:center}
+    .icon-btn{width:44px;height:44px;border-radius:8px;border:0;background:transparent;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px}
+
+    /* ------- Hero ------- */
+    .hero{height:70vh;min-height:420px;background-image:url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:0 20px}
+    .hero h1{font-size:3rem;letter-spacing:3px;margin-bottom:10px}
+    .hero p{max-width:760px;font-size:1.05rem;color:rgba(255,255,255,0.9)}
+
+    /* ------- Content ------- */
+    section{padding:56px 20px}
+    h2.section-title{font-size:1.6rem;letter-spacing:1.5px;margin-bottom:18px;text-align:center}
+
+    /* product grid */
+    .product-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+    .product{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 6px 18px rgba(15,15,15,0.04);transition:transform .22s}
+    .product:hover{transform:translateY(-6px)}
+    .product img{width:100%;height:260px;object-fit:cover;border-radius:8px}
+    .product h3{margin:12px 0 6px;font-size:16px}
+    .product .price{font-weight:700;color:#c28b5a}
+
+    /* collections */
+    .collections{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1200px;margin:0 auto}
+    .collection-card{border-radius:10px;overflow:hidden;position:relative}
+
+    /* about / contact */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1200px;margin:0 auto}
+    .card{background:#fafafa;border-radius:10px;padding:18px}
+
+    /* ------- Footer ------- */
+    footer{background:#111;color:#ddd;padding:48px 20px}
+    .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+    .footer h4{color:#fff;margin-bottom:10px;font-size:15px}
+    .footer a{display:block;color:rgba(255,255,255,0.78);margin-bottom:8px;font-size:14px}
+    .newsletter input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:#fff;margin-bottom:8px}
+    .newsletter button{padding:10px 14px;border-radius:8px;border:0;background:#c28b5a;color:#111;font-weight:700;cursor:pointer}
+
+    .socials{display:flex;gap:10px;margin-top:8px}
+    .socials a{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;justify-content:center;color:#fff}
+
+    .foot-note{max-width:1200px;margin:26px auto 0;text-align:center;color:rgba(255,255,255,0.55);font-size:13px}
+
+    /* responsive */
+    @media(max-width:900px){
+      .two-col{grid-template-columns:1fr}
+      .hero h1{font-size:2.2rem}
+      .logo img{height:46px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav class="nav-left" aria-label="Left menu">
+        <a href="#shop">Shop</a>
+        <a href="#collections">Collections</a>
+      </nav>
+
+      <div class="logo" aria-label="Brand logo">
+        <!-- Replace this with your real logo file path (assets/logo.png) -->
+        <a href="/"><img src="https://via.placeholder.com/180x52?text=SOTF+Studio" alt="SOTF Studio logo"></a>
+      </div>
+
+      <div class="nav-right" aria-label="Right menu / icons">
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+
+        <div class="icons" style="margin-left:8px">
+          <button class="icon-btn" id="searchBtn" title="Search">🔍</button>
+          <button class="icon-btn" id="userBtn" title="Account">👤</button>
+          <button class="icon-btn" id="cartBtn" title="Cart">🛒</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="banner">
+    <h1>SUMMER SCORCH — NEW COLLECTION</h1>
+    <p>Bold silhouettes, handcrafted details. Limited release — shop while stocks last.</p>
+  </section>
+
+  <!-- NEW IN / PRODUCTS -->
+  <section id="shop">
+    <h2 class="section-title">NEW IN</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- JS will populate products -->
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <section id="collections">
+    <h2 class="section-title">FROM OUR NEW COLLECTION</h2>
+    <div class="collections">
+      <div class="collection-card"><img src="https://images.unsplash.com/photo-1520975918319-38f5dc91b8f0?auto=format&fit=crop&w=800&q=60" style="width:100%;height:260px;object-fit:cover"></div>
+      <div class="collection-card"><img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=800&q=60" style="width:100%;height:260px;object-fit:cover"></div>
+      <div class="collection-card"><img src="https://images.unsplash.com/photo-1519744346366-3bdd97de6957?auto=format&fit=crop&w=800&q=60" style="width:100%;height:260px;object-fit:cover"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT + CONTACT -->
+  <section id="about" style="padding-top:32px;padding-bottom:0">
+    <div class="two-col" style="padding-bottom:20px">
+      <div class="card">
+        <h3>About sotf studios</h3>
+        <p style="color:#333;margin-top:8px">At sotf studios , fashion is an expression of individuality and artistry. Our pieces are designed and curated in Lagos, combining global trends with local craftsmanship.</p>
+      </div>
+      <div class="card" id="contact">
+        <h3>Store & Contact</h3>
+        <p style="color:#333;margin-top:8px">SHOP 38/39, AARON'S LEKKI MALL, ADMIRALTY WAY, LAGOS, NIGERIA<br>Hours: Mon-Sat 10:00–20:00, Sun 12:00–20:00<br>Email: <a href="mailto:sotfttw@gmail.com">sotfttw@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid footer container">
+      <div>
+        <h4>sotf studios</h4>
+        <p style="color:rgba(255,255,255,0.7);max-width:320px">Curated contemporary fashion with conscious craftsmanship. Follow us for drops and events.</p>
+        <div class="socials" aria-label="Social links">
+          <a href="#" title="Instagram">IG</a>
+          <a href="#" title="Facebook">FB</a>
+          <a href="#" title="X / Twitter">X</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Shop</h4>
+        <a href="#shop">New In</a>
+        <a href="#collections">Collections</a>
+        <a href="#contact">Find a Store</a>
+        <a href="#contact">Shipping & Returns</a>
+      </div>
+
+      <div>
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">FAQ</a>
+        <a href="#">Size Guide</a>
+      </div>
+
+      <div>
+        <h4>Newsletter</h4>
+        <div class="newsletter">
+          <p style="color:rgba(255,255,255,0.7);margin-bottom:10px">Sign up to receive news on drops and exclusive offers.</p>
+          <input id="newsletterEmail" type="email" placeholder="Enter your email" />
+          <button id="newsletterBtn">Subscribe</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-note">&copy; <span id="year"></span> sotf studios All rights reserved.</div>
+  </footer>
+
+  <!-- Search panel (hidden) -->
+  <div id="searchPanel" style="display:none;position:fixed;top:84px;left:50%;transform:translateX(-50%);width:min(820px,92%);background:#fff;padding:12px;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.15);z-index:1200;">
+    <form id="searcsotform" style="display:flex;gap:8px;">
+      <input id="searchInput" type="search" placeholder="Search products, styles, SKU..." style="flex:1;padding:12px;border-radius:8px;border:1px solid #ddd" />
+      <button type="submit" style="padding:10px 14px;border-radius:8px;border:0;background:#111;color:#fff">Search</button>
+      <button id="closeSearch" type="button" style="padding:10px;border-radius:8px;border:0;background:transparent">✕</button>
+    </form>
+  </div>
+
+  <script>
+    // -------- Data (local array) --------
+    const products = [
+      {id:1,title:'sotf RECYCLED CAMO HAT',price:'₦368,000',img:'https://images.unsplash.com/photo-1519744346366-3bdd97de6957?auto=format&fit=crop&w=800&q=60'},
+      {id:2,title:'sotf FADED CAMO JORTS',price:'₦560,000',img:'https://images.unsplash.com/photo-1520975918319-38f5dc91b8f0?auto=format&fit=crop&w=800&q=60'},
+      {id:3,title:'sotf FR7 SLEEVELESS TEE',price:'₦320,000',img:'https://images.unsplash.com/photo-1520975698519-58a6ec5249bb?auto=format&fit=crop&w=800&q=60'},
+      {id:4,title:'sotf X BURNA SLEELESS TEE',price:'₦320,000',img:'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=60'},
+      {id:5,title:'sotf HOODIE PANTS',price:'₦480,000',img:'https://images.unsplash.com/photo-1503342217505-b0a15f2b6b0e?auto=format&fit=crop&w=800&q=60'},
+      {id:6,title:'sotf PRINT FEMALE TOP',price:'₦160,000',img:'https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=800&q=60'},
+      {id:7,title:'sotf PRINT FEMALE SKIRT',price:'₦160,000',img:'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=60'},
+      {id:8,title:'sotf SUSTAINABLE JACKET',price:'₦650,000',img:'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=800&q=60'}
+    ];
+
+    // -------- Render products --------
+    const grid = document.getElementById('productGrid');
+    function renderProducts(){
+      grid.innerHTML = '';
+      products.forEach(p=>{
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.title}">
+          <h3>${p.title}</h3>
+          <div class="price">${p.price}</div>
+          <div style="margin-top:10px"><button style="padding:8px 12px;border-radius:8px;border:0;background:#111;color:#fff;cursor:pointer" onclick="quickView(${p.id})">Quick view</button></div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+    renderProducts();
+
+    // -------- Quick view popup (simple) --------
+    function quickView(id){
+      const p = products.find(x=>x.id===id);
+      if(!p) return alert('Product not found.');
+      const w = window.open('', '_blank', 'width=700,height=600');
+      w.document.write(`<html><head><title>${p.title}</title><style>body{font-family:Inter,Arial;padding:20px;background:#111;color:#fff}img{max-width:100%;border-radius:10px}</style></head><body><h2>${p.title}</h2><img src="${p.img}"><p style="margin-top:12px">Price: ${p.price}</p><p><button onclick="window.close()" style="padding:8px 12px;border-radius:8px;border:0;background:#c28b5a;color:#111">Close</button></p></body></html>`);
+    }
+
+    // -------- Search panel controls --------
+    const searchBtn = document.getElementById('searchBtn');
+    const searchPanel = document.getElementById('searchPanel');
+    const closeSearch = document.getElementById('closeSearch');
+    const searcsotform = document.getElementById('searcsotform');
+    searchBtn.addEventListener('click', ()=>{ searchPanel.style.display = 'block'; document.getElementById('searchInput').focus(); });
+    closeSearch.addEventListener('click', ()=>{ searchPanel.style.display = 'none'; });
+    searcsotform.addEventListener('submit', (e)=>{ e.preventDefault(); const q = document.getElementById('searchInput').value.toLowerCase().trim(); const results = products.filter(p => p.title.toLowerCase().includes(q)); alert(`Found ${results.length} result(s) — check console.`); console.log('Search:', results); searchPanel.style.display='none'; });
+
+    // -------- Newsletter --------
+    document.getElementById('newsletterBtn').addEventListener('click', ()=>{
+      const email = document.getElementById('newsletterEmail').value.trim();
+      if(!email || !email.includes('@')) return alert('Please enter a valid email address.');
+      alert('Thanks — you are subscribed.');
+      document.getElementById('newsletterEmail').value = '';
+    });
+
+    // -------- Misc --------
+    document.getElementById('year').innerText = new Date().getFullYear();
+    document.getElementById('cartBtn').addEventListener('click', ()=>alert('Cart is empty (demo).'));
+    document.getElementById('userBtn').addEventListener('click', ()=>alert('Account (demo).'));
+  </script>
+
+</body>
+</html>
